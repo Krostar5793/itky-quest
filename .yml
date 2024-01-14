@@ -1,4 +1,4 @@
-name: Update README with Execution Result
+name: Write the number of dot works down to README.md
 
 on: [push]
 
@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: 'main' # デフォルトブランチ名に合わせてください
+        ref: 'main'
     
     - name: Install g++
       run: sudo apt-get install g++ -y
@@ -21,10 +21,13 @@ jobs:
     - name: Update README
       run: |
         COUNT=$(cat output.txt)
-        sed -i '/<!-- PNG_COUNT_START -->/,/<!-- PNG_COUNT_END -->/c\<!-- PNG_COUNT_START -->\n## PNG Count\nThere are ${COUNT} PNG files in the dot-works directory.\n<!-- PNG_COUNT_END -->' README.md
+        README_CONTENT=$(cat README.md)
+        echo -e "${README_CONTENT}\n今までで**${COUNT}**つのドット絵作品が描かれています。" > README.md
     
     - name: Commit and Push if Changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git diff --quiet && git diff --staged --quiet || (git commit -am "Update README with .png file count" && git push)
+        git add README.md
+        git commit -m "Update README with .png file count" -a || echo "No changes to commit"
+        git push
