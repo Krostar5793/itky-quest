@@ -1,4 +1,4 @@
-name: C++ Count PNG Files Workflow
+name: Get number of PNGs on dot-works
 
 on: [push]
 
@@ -11,6 +11,6 @@ jobs:
     - name: Install g++
       run: sudo apt-get install g++ -y
     - name: Compile C++ program
-      run: g++ -std=c++17 -o count_png your_cpp_program.cpp
+      run: g++ -std=c++17 -o count_png counter.cpp
     - name: Run C++ program
-      run: ./count_png
+      run: ./counter
