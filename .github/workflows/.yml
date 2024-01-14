@@ -21,7 +21,7 @@ jobs:
     - name: Update README
       run: |
         COUNT=$(cat output.txt)
-        sed -i '/<!-- PNG_COUNT_START -->/,/<!-- PNG_COUNT_END -->/c\<!-- PNG_COUNT_START -->\nThere are ${COUNT} PNG files in the dot-works directory.\n<!-- PNG_COUNT_END -->' README.md
+        sed -i -e '/<!-- PNG_COUNT_START -->/,/<!-- PNG_COUNT_END -->/c\<!-- PNG_COUNT_START -->\n今までで**${COUNT}**つのドット絵作品が描かれています。\n<!-- PNG_COUNT_END -->' README.md
     
     - name: Commit and Push if Changes
       run: |
