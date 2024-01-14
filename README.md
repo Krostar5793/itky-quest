@@ -1,6 +1,8 @@
 # イトキヨクエスト2
 
 <!-- PNG_COUNT_START -->
+## PNG Count
+There are ${COUNT} PNG files in the dot-works directory.
 <!-- PNG_COUNT_END -->
 
 * [技術スタック](#技術スタック)
