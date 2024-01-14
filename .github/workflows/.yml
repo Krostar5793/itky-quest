@@ -1,16 +1,30 @@
-name: C++ Count PNG Files Workflow
+name: Write the number of dot works down on README.md
 
 on: [push]
 
 jobs:
-  build:
+  update-readme:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: 'main'
+    
     - name: Install g++
       run: sudo apt-get install g++ -y
-    - name: Compile C++ program
-      run: g++ -std=c++17 -o count_png your_cpp_program.cpp
-    - name: Run C++ program
-      run: ./count_png
+    
+    - name: Compile and Run C++ Program
+      run: |
+        g++ counter.cpp -o counter -std=c++17
+        ./counter > output.txt
+    
+    - name: Update README
+      run: |
+        COUNT=$(cat output.txt)
+        sed -i "/<!-- PNG_COUNT_START -->/,/<!-- PNG_COUNT_END -->/c\<!-- PNG_COUNT_START -->\n今までで**${COUNT}**つのドット絵作品が描かれています。\n<!-- PNG_COUNT_END -->" README.md
+    
+    - name: Commit and Push if Changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git diff --quiet && git diff --staged --quiet || (git commit -am "Update README with .png file count" && git push)
