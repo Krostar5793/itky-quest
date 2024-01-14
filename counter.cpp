@@ -11,6 +11,6 @@ int main() {
         }
     }
 
-    std::cout << "今までで計" << count << "つの作品が作られました。" << std::endl;
+    std::cout << count << std::endl;
     return 0;
 }
