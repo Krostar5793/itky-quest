@@ -1,0 +1,16 @@
+name: C++ Count PNG Files Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install g++
+      run: sudo apt-get install g++ -y
+    - name: Compile C++ program
+      run: g++ -std=c++17 -o count_png your_cpp_program.cpp
+    - name: Run C++ program
+      run: ./count_png
