@@ -1,16 +1,33 @@
-name: Get number of PNGs on dot-works
+name: Write the number of dot works down to README.md
 
 on: [push]
 
 jobs:
-  build:
+  update-readme:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: 'main'
+    
     - name: Install g++
       run: sudo apt-get install g++ -y
-    - name: Compile C++ program
-      run: g++ counter.cpp -o counter -std=c++17
-    - name: Run C++ program
-      run: ./counter
+    
+    - name: Compile and Run C++ Program
+      run: |
+        g++ counter.cpp -o counter -std=c++17
+        ./counter > output.txt
+    
+    - name: Update README
+      run: |
+        COUNT=$(cat output.txt)
+        README_CONTENT=$(cat README.md)
+        echo "${README_CONTENT}\n\n## PNG Count\n今までで${COUNT}つのドット絵作品が描かれています。" > README.md
+    
+    - name: Commit and Push if Changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add README.md
+        git commit -m "Update README with .png file count" -a || echo "No changes to commit"
+        git push

@@ -11,6 +11,6 @@ int main() {
         }
     }
 
-    std::cout << ".png files in " << path << ": " << count << std::endl;
+    std::cout << "今までで計" << count << "つの作品が作られました。" << std::endl;
     return 0;
 }
