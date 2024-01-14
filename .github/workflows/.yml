@@ -22,7 +22,7 @@ jobs:
       run: |
         COUNT=$(cat output.txt)
         README_CONTENT=$(cat README.md)
-        echo -e "${README_CONTENT}\n今までで<>${COUNT}<>つのドット絵作品が描かれています。" > README.md
+        echo -e "${README_CONTENT}\n今までで**${COUNT}**つのドット絵作品が描かれています。" > README.md
     
     - name: Commit and Push if Changes
       run: |
