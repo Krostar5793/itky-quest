@@ -11,6 +11,6 @@ jobs:
     - name: Install g++
       run: sudo apt-get install g++ -y
     - name: Compile C++ program
-      run: g++ -std=c++17 -o count_png counter.cpp
+      run: g++ -std=c++17 -o count_png counter.cpp -lstdc++fs
     - name: Run C++ program
       run: ./counter
