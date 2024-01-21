@@ -4,7 +4,9 @@
 #include <fstream>
 #include <string>
 
-class fileManager {
+#include "NoInputFilesError.h"
+
+class fileManager final {
   private:
     std::string fileName;
     std::ifstream infile;
@@ -12,11 +14,13 @@ class fileManager {
 
   public:
     fileManager() = delete;
-    fileManager(const std::string fileName);
+    fileManager(const std::string* fileName);
     fileManager(const fileManager& file) = default;
-    virtual ~fileManager() = default;
+    ~fileManager();
 
     fileManager& operator=(const fileManager& file) = default;
+
+    std::string& loadWordTo(std::string& word);
 
     bool isEndOfFile();
 
