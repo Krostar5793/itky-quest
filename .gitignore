@@ -1,5 +1,6 @@
 *.env
 *.exe
 *.o
+*.d
 
 .vscode

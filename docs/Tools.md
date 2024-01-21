@@ -28,3 +28,5 @@ push時にGitHub Actionsのworkflowを走らせて`/dot-works`ディレクトリ
     - `-f`
       FROMオプション。`research`などで特定のファイルに絞って実行したいときに有効。
       `-f`の後に`[filename]`をつける(拡張子を含めない)。
+
+- GUIでブラウザ上からドキュメントを効率的に行うページ<br />
