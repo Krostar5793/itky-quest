@@ -29,4 +29,7 @@ push時にGitHub Actionsのworkflowを走らせて`/dot-works`ディレクトリ
       FROMオプション。`research`などで特定のファイルに絞って実行したいときに有効。
       `-f`の後に`[filename]`をつける(拡張子を含めない)。
 
-- GUIでブラウザ上からドキュメントを効率的に行うページ<br />
+- [GUIでブラウザ上からドキュメントを効率的に行うページ](../itky-gui/)<br />
+【仕様】
+Vercelからホスティングされたページにアクセスし、特定のデベロッパーがGUIでドキュメントを変更できるようにする。ページからGitHub Actionsのworkflowをトリガーし、GitHub Actionsが内部でitkyマネージャを動作させる。
+[ここ](https://scrapbox.io/nwtgck/GitHub_Actions%E3%82%92curl%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B)あたりが参考になる。
