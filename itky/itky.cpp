@@ -6,13 +6,14 @@
 #include "fileManager.h"
 #include "NoInputFilesError.h"
 
-#define DOCS "/docs/"
+#define DOCS "../docs/"
 
+[[deprecated]]
 int main(int argc, char* argv[]) {
   const std::vector<std::string> args(argv, argv + argc);
   const std::int8_t numberOfParams(argc);
   const std::string fileName(DOCS + std::string(argv[1]));
-  fileManager file();
+  fileManager file;
 
   try {
     fileManager file = fileManager(&fileName);

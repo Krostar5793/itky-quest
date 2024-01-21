@@ -8,12 +8,12 @@
 
 class fileManager final {
   private:
-    std::string fileName;
-    std::ifstream infile;
-    std::ofstream outfile;
+    std::string fileName{};
+    std::ifstream infile{};
+    std::ofstream outfile{};
 
   public:
-    fileManager() = delete;
+    fileManager() = default;
     fileManager(const std::string* fileName);
     fileManager(const fileManager& file) = default;
     ~fileManager();
