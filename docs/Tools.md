@@ -2,7 +2,7 @@
 
 ※完成済のものには横線を引いています。
 
-- ~~push時にドット絵の枚数を数えてREADME.mdに反映させる~~(../.github/workflows/.yml)<br />
+- [~~push時にドット絵の枚数を数えてREADME.mdに反映させる~~](../.github/workflows/.yml)<br />
 【仕様】
 push時にGitHub Actionsのworkflowを走らせて`/dot-works`ディレクトリ内の`.img`ファイルの枚数を`counter.cpp`をコンパイルして生成した実行ファイルによって数え、`sed`コマンドを用いて`README.md`の特定の行に挿入する。
 
