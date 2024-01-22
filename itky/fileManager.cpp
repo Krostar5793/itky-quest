@@ -1,8 +1,8 @@
-#include "fileManager.h"
+#include "FileManager.h"
 
-// fileManager :: fileManager() = default;
+// FileManager :: FileManager() = default;
 
-fileManager :: fileManager(const std::string fileName) {
+FileManager :: FileManager(const std::string fileName) {
   if ( &fileName == nullptr ) {
     throw NoInputFilesError();
   }
@@ -14,17 +14,17 @@ fileManager :: fileManager(const std::string fileName) {
   }
 }
 
-fileManager :: ~fileManager() {
+FileManager :: ~FileManager() {
   infile.close();
   outfile.close();
 }
 
-fileManager& fileManager :: operator=(const fileManager& file) {
+FileManager& FileManager :: operator=(const FileManager& file) {
   this->fileName = file.fileName;
   return *this;
 }
 
-std::string& fileManager :: loadWordTo(std::string& word) {
+std::string& FileManager :: loadWordTo(std::string& word) {
   infile >> word;
   std::cout << word << std::endl;
   if ( !infile ) {
@@ -33,7 +33,7 @@ std::string& fileManager :: loadWordTo(std::string& word) {
   return word;
 }
 
-std::string& fileManager :: loadLineTo(std::string& line) {
+std::string& FileManager :: loadLineTo(std::string& line) {
   std::getline(infile, line);
   if ( !infile ) {
     throw FailedToLoadDataError();
@@ -41,10 +41,10 @@ std::string& fileManager :: loadLineTo(std::string& line) {
   return line;
 }
 
-std::string fileManager :: getFileName() {
+std::string FileManager :: getFileName() {
   return fileName;
 }
 
-bool fileManager :: isEndOfFile() {
+bool FileManager :: isEndOfFile() {
   return infile.eof();
 }

@@ -8,19 +8,19 @@
 #include "FileNotFoundError.h"
 #include "FailedToLoadDataError.h"
 
-class fileManager final {
+class FileManager final {
   private:
     std::string fileName{};
     std::ifstream infile{};
     std::ofstream outfile{};
 
   public:
-    fileManager() = default;
-    fileManager(const std::string fileName);
-    fileManager(const fileManager& file) = default;
-    ~fileManager();
+    FileManager() = default;
+    FileManager(const std::string fileName);
+    FileManager(const FileManager& file) = default;
+    ~FileManager();
 
-    fileManager& operator=(const fileManager& file);
+    FileManager& operator=(const FileManager& file);
 
     std::string& loadWordTo(std::string& word);
     std::string& loadLineTo(std::string& line);

@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-#include "fileManager.h"
+#include "FileManager.h"
 #include "NoInputFilesError.h"
 #include "FileNotFoundError.h"
 
@@ -14,10 +14,10 @@ int main(int argc, char* argv[]) {
   const std::vector<std::string> args(argv, argv + argc);
   const std::int8_t numberOfParams(argc);
   const std::string fileName(DOCS + std::string(argv[1]));
-  fileManager file;
+  FileManager file;
 
   try {
-    file = fileManager(fileName);
+    file = FileManager(fileName);
     std::cout << file.getFileName() << std::endl;
   } catch ( NoInputFilesError& e ) {
     std::cout << e.what() << std::endl;
