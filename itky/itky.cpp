@@ -16,10 +16,14 @@ int main(int argc, char* argv[]) {
   fileManager file;
 
   try {
-    fileManager file = fileManager(&fileName);
+    file = fileManager(fileName);
   } catch ( NoInputFilesError& e ) {
     std::cout << e.what() << std::endl;
   }
+
+  std::cout << file.getFileName() << std::endl;
+
+  return 0;
 
   std::string word;
   while ( true ) {

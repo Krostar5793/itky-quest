@@ -14,14 +14,15 @@ class fileManager final {
 
   public:
     fileManager() = default;
-    fileManager(const std::string* fileName);
+    fileManager(const std::string fileName);
     fileManager(const fileManager& file) = default;
     ~fileManager();
 
-    fileManager& operator=(const fileManager& file) = default;
+    fileManager& operator=(const fileManager& file);
 
     std::string& loadWordTo(std::string& word);
 
+    std::string getFileName();
     bool isEndOfFile();
 
 };

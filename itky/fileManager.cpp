@@ -2,11 +2,11 @@
 
 // fileManager :: fileManager() = default;
 
-fileManager :: fileManager(const std::string* fileName) {
-  if ( fileName == nullptr ) {
+fileManager :: fileManager(const std::string fileName) {
+  if ( &fileName == nullptr ) {
     throw NoInputFilesError("itky: fatal error: no input files\nexecution terminated.");
   }
-  this->fileName = *fileName;
+  this->fileName = fileName;
   infile.open(this->fileName);
   outfile.open(this->fileName);
 }
@@ -18,11 +18,18 @@ fileManager :: ~fileManager() {
   outfile.close();
 }
 
-// fileManager& fileManager :: operator=(const fileManager& file) = default;
+fileManager& fileManager :: operator=(const fileManager& file) {
+  this->fileName = file.fileName;
+  return *this;
+}
 
 std::string& fileManager :: loadWordTo(std::string& word) {
   outfile << word;
   return word;
+}
+
+std::string fileManager :: getFileName() {
+  return fileName;
 }
 
 bool fileManager :: isEndOfFile() {
