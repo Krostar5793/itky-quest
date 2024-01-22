@@ -1,7 +1,7 @@
 #include "FileNotFoundError.h"
 
 FileNotFoundError :: FileNotFoundError()
-  : message("itky: fatal error: file not found\nexecution terminated.")
+  : message("itky: \033[31m fatal error: \033[m file not found\nexecution terminated.")
 {}
 
 FileNotFoundError :: FileNotFoundError(const std::string& message)
