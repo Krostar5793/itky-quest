@@ -8,7 +8,9 @@ class NoInputFilesError final : public std::exception {
     std::string message;
 
   public:
+    NoInputFilesError();
     NoInputFilesError(const std::string& message);
     ~NoInputFilesError();
     std::string what();
+
 };
