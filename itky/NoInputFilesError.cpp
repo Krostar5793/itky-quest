@@ -1,5 +1,9 @@
 #include "NoInputFilesError.h"
 
+NoInputFilesError :: NoInputFilesError()
+  : message("itky: fatal error: no input files\nexecution terminated.")
+{}
+
 NoInputFilesError :: NoInputFilesError(const std::string& message)
   : message(message)
 {}

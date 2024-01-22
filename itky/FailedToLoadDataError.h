@@ -8,6 +8,7 @@ class FailedToLoadDataError final : public std::exception {
     std::string message;
 
   public:
+    FailedToLoadDataError();
     FailedToLoadDataError(const std::string message);
     ~FailedToLoadDataError();
     std::string what();

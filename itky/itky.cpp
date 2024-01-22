@@ -5,6 +5,7 @@
 
 #include "fileManager.h"
 #include "NoInputFilesError.h"
+#include "FileNotFoundError.h"
 
 #define DOCS "../docs/"
 
@@ -17,17 +18,18 @@ int main(int argc, char* argv[]) {
 
   try {
     file = fileManager(fileName);
+    std::cout << file.getFileName() << std::endl;
   } catch ( NoInputFilesError& e ) {
     std::cout << e.what() << std::endl;
+    return -1;
+  } catch ( FileNotFoundError& e ) {
+    std::cout << e.what() << std::endl;
+    return -1;
   }
-
-  std::cout << file.getFileName() << std::endl;
-
-  return 0;
 
   std::string word;
   while ( true ) {
-    file.loadWordTo(word);
+    file.loadLineTo(word);
     if ( file.isEndOfFile() ) break;
     std::cout << word << std::endl;
   }

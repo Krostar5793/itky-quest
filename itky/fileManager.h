@@ -5,6 +5,8 @@
 #include <string>
 
 #include "NoInputFilesError.h"
+#include "FileNotFoundError.h"
+#include "FailedToLoadDataError.h"
 
 class fileManager final {
   private:
@@ -21,6 +23,7 @@ class fileManager final {
     fileManager& operator=(const fileManager& file);
 
     std::string& loadWordTo(std::string& word);
+    std::string& loadLineTo(std::string& line);
 
     std::string getFileName();
     bool isEndOfFile();

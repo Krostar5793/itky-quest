@@ -8,7 +8,9 @@ class FileNotFoundError final : public std::exception {
     std::string message;
 
   public:
+    FileNotFoundError();
     FileNotFoundError(const std::string& message);
     ~FileNotFoundError();
     std::string what();
+
 };
