@@ -8,7 +8,7 @@ CFLAGS	= -std=c++17
 TARGET	= itky.exe
 
 # sources
-SRCS		= itky.cpp FileManager.cpp NoInputFilesError.cpp FileNotFoundError.cpp FailedToLoadDataError.cpp
+SRCS		= itky.cpp
 
 # Object filename
 OBJS		= $(SRCS:.cpp=.o)

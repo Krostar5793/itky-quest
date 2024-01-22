@@ -10,13 +10,13 @@
 
 class FileManager final {
   private:
-    std::string fileName{};
+    std::string filePath{};
     std::ifstream infile{};
     std::ofstream outfile{};
 
   public:
     FileManager() = default;
-    FileManager(const std::string fileName);
+    FileManager(const std::string filePath);
     FileManager(const FileManager& file) = default;
     ~FileManager();
 
@@ -25,7 +25,7 @@ class FileManager final {
     std::string& loadWordTo(std::string& word);
     std::string& loadLineTo(std::string& line);
 
-    std::string getFileName();
+    std::string getFilePath();
     bool isEndOfFile();
 
 };

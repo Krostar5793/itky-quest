@@ -2,47 +2,42 @@
 
 // FileManager :: FileManager() = default;
 
-FileManager :: FileManager(const std::string fileName) {
-  if ( &fileName == nullptr ) {
-    throw NoInputFilesError();
-  }
-  this->fileName = fileName;
-  infile.open(this->fileName);
-  outfile.open(this->fileName);
-  if ( (!infile) || (!outfile) ) {
-    throw FileNotFoundError();
-  }
+FileManager :: FileManager(const std::string filePath) {
+  this->filePath = filePath;
 }
 
 FileManager :: ~FileManager() {
-  infile.close();
-  outfile.close();
+  if ( infile.is_open() ) infile.close();
+  if ( outfile.is_open() ) outfile.close();
 }
 
 FileManager& FileManager :: operator=(const FileManager& file) {
-  this->fileName = file.fileName;
+  this->filePath = file.filePath;
   return *this;
 }
 
 std::string& FileManager :: loadWordTo(std::string& word) {
+  infile.open(filePath);
   infile >> word;
-  std::cout << word << std::endl;
   if ( !infile ) {
     throw FailedToLoadDataError();
   }
+  infile.close();
   return word;
 }
 
 std::string& FileManager :: loadLineTo(std::string& line) {
+  infile.open(filePath);
   std::getline(infile, line);
   if ( !infile ) {
     throw FailedToLoadDataError();
   }
   return line;
+  infile.close();
 }
 
-std::string FileManager :: getFileName() {
-  return fileName;
+std::string FileManager :: getFilePath() {
+  return filePath;
 }
 
 bool FileManager :: isEndOfFile() {
