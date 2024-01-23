@@ -1,15 +1,14 @@
 #pragma once
 
-#include <exception>
 #include <string>
 
-class FileNotFoundError final : public std::exception {
+class FileNotFoundError {
   private:
-    const char* message;
+    std::string message;
 
   public:
     FileNotFoundError();
-    FileNotFoundError(const char*& message);
+    FileNotFoundError(std::string message);
     ~FileNotFoundError();
-    const char* what() const noexcept override;
+    std::string what() const noexcept;
 };

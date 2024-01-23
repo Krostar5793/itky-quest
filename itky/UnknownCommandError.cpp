@@ -1,15 +1,15 @@
 #include "UnknownCommandError.h"
 
 UnknownCommandError :: UnknownCommandError()
-  : message("Unknown command ")
+  : message("Unknown command: ")
 {}
 
-UnknownCommandError :: UnknownCommandError(const char* message)
+UnknownCommandError :: UnknownCommandError(const std::string message)
   : message(message)
 {}
 
 UnknownCommandError :: ~UnknownCommandError() = default;
 
-const char* UnknownCommandError :: what() const noexcept {
+std::string UnknownCommandError :: what() const noexcept {
   return message;
 }
