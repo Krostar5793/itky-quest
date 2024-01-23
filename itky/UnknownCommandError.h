@@ -1,14 +1,16 @@
 #pragma once
 
-#include <exception>
+#include <string>
 
-class UnknownCommandError final : std::exception {
+class UnknownCommandError {
   private:
-    const char* message;
+    std::string message;
 
   public:
     UnknownCommandError();
-    UnknownCommandError(const char* message);
+    UnknownCommandError(const std::string message);
     ~UnknownCommandError();
-    const char* what() const noexcept override;
+
+    std::string what() const noexcept;
+    
 };
