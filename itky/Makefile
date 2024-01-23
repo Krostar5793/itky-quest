@@ -8,7 +8,10 @@ CFLAGS	= -std=c++17
 TARGET	= itky.exe
 
 # sources
-SRCS		= itky.cpp
+MAIN		= itky.cpp
+ERRS		= FileNotFoundError.cpp UnknownCommandError.cpp
+MNGS		= MessageManager.cpp CommandManager.cpp
+SRCS		= $(MAIN) $(ERRS) $(MNGS)
 
 # Object filename
 OBJS		= $(SRCS:.cpp=.o)
