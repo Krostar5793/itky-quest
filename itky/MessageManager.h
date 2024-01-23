@@ -5,6 +5,7 @@
 #include <fstream>
 
 #include "FileNotFoundError.h"
+#include "UnknownCommandError.h"
 
 class MessageManager {
   private:
@@ -19,8 +20,9 @@ class MessageManager {
     MessageManager& operator=(const MessageManager&) = delete;
     MessageManager& operator=(const MessageManager&&) = delete;
 
-    static MessageManager* getInstance();
-
     void help();
     void version();
+
+    static MessageManager* getInstance();
+
 };
