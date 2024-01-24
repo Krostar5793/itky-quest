@@ -10,7 +10,7 @@ TARGET	= itky.exe
 # sources
 MAIN		= itky.cpp
 ERRS		= FileNotFoundError.cpp UnknownCommandError.cpp
-MNGS		= MessageManager.cpp CommandManager.cpp
+MNGS		= MessageManager.cpp CommandManager.cpp CommandListManager.cpp
 SRCS		= $(MAIN) $(ERRS) $(MNGS)
 
 # Object filename
