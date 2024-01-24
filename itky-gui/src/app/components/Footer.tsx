@@ -1,8 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className='flex h-16 items-center'>
+    <footer className='absolute bottom-0 flex h-20 w-full items-center'>
       <div className='flex w-full justify-between px-[8vw]'>
         <span>{ new Date().getFullYear() } &copy; All Rights Reserved</span>
         <div>
