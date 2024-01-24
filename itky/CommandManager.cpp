@@ -1,14 +1,19 @@
 #include "CommandManager.h"
+#include "MessageManager.h"
+#include "CommandListManager.h"
+#include "UnknownCommandError.h"
 
-void CommandManager :: command(const std::string cmd) const {
-  const std::map<std::string, std::string>::const_iterator it = ::commands.find(cmd);
-  if ( it != ::commands.end() ) {
-     static MessageManager* messageManager = MessageManager :: getInstance();
-     if ( it->second == "help" )    messageManager->help();
-     if ( it->second == "version" ) messageManager->version();
-  } else {
-    throw UnknownCommandError(UnknownCommandError().what() + cmd);
+void CommandManager :: command(const char* cmd) const {
+  CommandListManager* commandListManager = CommandListManager :: getInstance();
+  MessageManager* messageManager = MessageManager :: getInstance();
+  if ( cmd == nullptr ) {
+    messageManager->help();
+    return;
   }
+  std::map<std::string, CommandFunctionType> commands(commandListManager->getCommandList());
+  std::map<std::string, CommandFunctionType>::const_iterator it = commands.find(cmd);
+  if ( it != commands.end() ) it->second();
+  else throw UnknownCommandError(UnknownCommandError().what() + cmd);
 }
 
 CommandManager* CommandManager :: getInstance() {
