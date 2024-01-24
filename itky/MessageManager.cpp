@@ -1,5 +1,7 @@
 #include "MessageManager.h"
 
+#include <fstream>
+
 void MessageManager :: printTextFile(const std::string fileName) {
   std::ifstream infile(fileName);
   if ( !infile ) throw FileNotFoundError();
@@ -11,11 +13,15 @@ void MessageManager :: printTextFile(const std::string fileName) {
 }
 
 void MessageManager :: help() {
-    printTextFile("./messages/help.txt");
+  printTextFile("./messages/help.txt");
 }
 
 void MessageManager :: version() {
-    printTextFile("./messages/version.txt");
+  printTextFile("./messages/version.txt");
+}
+
+void MessageManager :: write() {
+  std::cout << "Choose file > ";
 }
 
 MessageManager* MessageManager :: getInstance() {
