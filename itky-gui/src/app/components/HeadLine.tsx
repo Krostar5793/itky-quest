@@ -3,7 +3,9 @@
 const HeadLine = () => {
   return (
     <>
-      <h1 className='font-mono text-5xl font-bold'>Welcome, Developpers!</h1>
+      <div>
+        <h1 className='px-8 py-4 font-mono text-5xl font-bold'>Welcome, Developpers!</h1>
+      </div>
     </>
   );
 };
