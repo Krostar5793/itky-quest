@@ -3,8 +3,8 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-const basicAuthUser = process.env.NEXT_PUBLIC_BASIC_AUTH_USER;
-const basicAuthPassword = process.env.NEXT_PUBLIC_BASIC_AUTH_PASSWORD;
+const basicAuthUser = process.env.NEXT_PUBLIC_BASIC_AUTH_USER!;
+const basicAuthPassword = process.env.NEXT_PUBLIC_BASIC_AUTH_PASSWORD!;
 
 function middleware(req: NextRequest): NextResponse {
   const basicAuth = req.headers.get('authorization');
