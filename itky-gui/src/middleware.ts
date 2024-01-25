@@ -1,33 +1,27 @@
 'use server';
 
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
-const correctUser = process.env.NEXT_BASIC_USER!;
-const correctPassword = process.env.NEXT_BASIC_PASSWORD!;
+const basicAuthUser = process.env.NEXT_PUBLIC_BASIC_AUTH_USER;
+const basicAuthPassword = process.env.NEXT_PUBLIC_BASIC_AUTH_PASSWORD;
 
-export const config = {
-  matcher: ['/:path*', '/index/:path*'],
-};
-
-export function middleware(req: NextRequest) {
-  const basicAuth = req.headers.get('Authorization');
+function middleware(req: NextRequest): NextResponse {
+  const basicAuth = req.headers.get('authorization');
+  const url = req.nextUrl;
 
   if ( basicAuth ) {
-    const authValue = basicAuth.split(' ')[1];
-    const [user, password] = atob(authValue).split(':');
+    const authValue = basicAuth.split(' ')[1] ?? '';
+    const [user, pwd] = atob(authValue).split(':');
 
-    if (user === correctUser && password === correctPassword) {
+    if ( user === basicAuthUser && pwd === basicAuthPassword ) {
       return NextResponse.next();
     }
-
-    return NextResponse.json(
-      { error: 'Invalid credentials' },
-      { headers: { 'WWW-Authenticate': 'Basic realm="Secure Area"' }, status: 401 }
-    );
-  } else {
-    return NextResponse.json(
-      { error: 'Please enter credentials' },
-      { headers: { 'WWW-Authenticate': 'Basic realm="Secure Area"' }, status: 401 }
-    );
   }
+
+  url.pathname = '/api/basic-auth';
+
+  return NextResponse.rewrite(url);
 }
+
+export { middleware };
