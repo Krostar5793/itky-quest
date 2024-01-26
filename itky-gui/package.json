@@ -9,6 +9,9 @@
     "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.6",
     "@typescript-eslint/parser": "^6.19.1",
     "next": "14.0.4",
     "react": "^18",
@@ -17,6 +20,7 @@
     "typescript-eslint": "^0.0.1-alpha.0"
   },
   "devDependencies": {
+    "@mui/material": "^5.15.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

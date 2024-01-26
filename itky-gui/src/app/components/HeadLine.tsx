@@ -9,7 +9,7 @@ const HeadLine = () => {
         <div className='flex-col space-y-4'>
           <h1 className='font-mono text-4xl font-bold md:text-5xl'>Welcome, Developpers!</h1>
           <div className='flex justify-center'>
-            <Link href={'/'} className='rounded-full bg-black px-4 py-2 text-white'>
+            <Link href={'/dashboard/edit'} className='rounded-full bg-black px-4 py-2 text-white'>
               編集する
             </Link>
           </div>
