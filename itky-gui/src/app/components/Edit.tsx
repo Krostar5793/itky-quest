@@ -150,7 +150,7 @@ const Edit = () => {
             <div className='mb-5 flex space-x-4'>
               <div className='mb-1 text-sm font-bold'>消費の有無</div>
               <div>
-                <input type='radio' id='consumable' name='isConsumable' value='consumable' />
+                <input type='radio' id='consumable' name='isConsumable' value='consumable' defaultChecked={true} />
                 <label htmlFor='consumable'>あり</label>
               </div>
               <div>
