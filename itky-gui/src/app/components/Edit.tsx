@@ -16,7 +16,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  height: '94vh',
+  height: '84vh',
   width: '80vw',
   bgcolor: 'background.paper',
   boxShadow: 24,
@@ -176,8 +176,8 @@ const Edit = () => {
         </Box>
       </Modal>
       <div onClick={handleOpen} className='absolute bottom-0 right-0 p-12'>
-        <Fab aria-label='add'>
-          <AddIcon/>
+        <Fab color='primary' aria-label='add'>
+          <AddIcon />
         </Fab>
       </div>
     </>

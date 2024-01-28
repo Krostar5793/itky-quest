@@ -9,9 +9,11 @@
     "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.6",
+    "@mui/material-nextjs": "^5.15.6",
     "@typescript-eslint/parser": "^6.19.1",
     "next": "14.0.4",
     "react": "^18",
