@@ -1,0 +1,19 @@
+name: Edit documents from itky-gui
+
+on:
+  workflow_dispatch:
+    inputs:
+      args:
+        description: 'Argments for the write'
+        required: true
+        type: string
+
+jobs:
+  run_itky:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run itky
+        run: ./itky/itky ${{ github.event.inputs.args }}
+        

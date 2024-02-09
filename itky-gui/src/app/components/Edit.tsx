@@ -16,8 +16,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  height: '84vh',
-  width: '80vw',
+  height: '86vh',
+  width: '86vw',
   bgcolor: 'background.paper',
   boxShadow: 24,
   px: 4,
@@ -35,8 +35,25 @@ const Edit = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async ( e: React.FormEvent<HTMLFormElement> ): Promise<void> => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
 
+    try {
+      const res = await fetch('', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if ( !res.ok ) throw new Error('Network response was not ok');
+
+    } catch ( e ) {
+      console.error('There was a problem with your fetch operation:', e);
+    }
   };
 
   return (
@@ -141,7 +158,7 @@ const Edit = () => {
               <div className='mb-1 text-sm font-bold'>使用効果</div>
               <textarea
                 className='w-full rounded-md border px-3 py-2 focus:border-sky-500 focus:outline-none'
-                placeholder='説明'
+                placeholder='使用効果'
                 id='effect'
               />
             </div>
