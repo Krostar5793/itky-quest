@@ -41,7 +41,7 @@ const Edit = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const res = await fetch('', {
+      const res = await fetch('/api/edit/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
