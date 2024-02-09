@@ -13,7 +13,7 @@ export default async function handler(
   if ( req.method === 'POST' ) {
     const { args } = req.body;
 
-    const url = 'https://api.github.com/repos/Krostar5793/itky-quest/actions/workflows/.yml/dispatches';
+    const url = 'https://api.github.com/repos/Krostar5793/itky-quest/actions/workflows/edit.yml/dispatches';
 
     const headers = {
       'Authorization': `Bearer ${githubToken}`,
