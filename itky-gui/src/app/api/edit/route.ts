@@ -1,45 +1,34 @@
-import type { NextApiRequest,  NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 
-type ApiResponse = {
-  name: string;
-}
+const githubToken = process.env.API_GITHUB_TOKEN;
 
-const githubToken = process.env.NEXT_PUBLIC_GITHUB_TOKEN!;
+const POST = async ( req: Request ) => {
+  const args = req.body;
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if ( req.method === 'POST' ) {
-    const { args } = req.body;
+  const url = 'https://api.github.com/repos/Krostar5793/itky-quest/actions/workflows/edit.yml/dispatches';
 
-    const url = 'https://api.github.com/repos/Krostar5793/itky-quest/actions/workflows/edit.yml/dispatches';
+  const headers = {
+    'Authorization': `Bearer ${githubToken}`,
+    'Accept': 'application/vnd.github.v3+json',
+  };
+  const body = {
+    ref: 'main',
+    inputs: { args },
+  };
 
-    const headers = {
-      'Authorization': `Bearer ${githubToken}`,
-      'Accept': 'application/vnd.github.v3+json',
-    };
-    const body = {
-      ref: 'main',
-      inputs: { args },
-    };
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+    });
 
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify(body),
-      });
-
-      if ( response.ok ) res.status(200).json({ message: 'Workflow triggered successfully' });
-      else res.status(response.status).json({ message: 'Failed to trigger workflow' });
-
-    } catch ( e ) {
-      console.error('Error triggering workflow:', e);
-      res.status(500).json({ message: 'Internal Server Error' });
-    }
-  } else {
-    res.setHeader('Allow', ['POST']);
-    res.status(405).json({ message: `Method ${req.method} Not Allowed` });
+    if ( response.ok ) return NextResponse.json({ message: 'Workflow triggered successfully' });
+    else return NextResponse.json({ message: 'Failed to trigger workflow' });
+  } catch ( e ) {
+    console.error('Error triggering workflow:', e);
+    return NextResponse.json({ message: 'Internal Server Error' });
   }
-}
+};
+
+export { POST };
