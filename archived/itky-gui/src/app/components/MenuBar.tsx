@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import DotWorks from '@/app/components/DotWorks';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -58,7 +59,7 @@ const BasicTabs = () => {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        Monsters
+        <DotWorks />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         Weapons
