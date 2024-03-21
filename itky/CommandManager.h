@@ -22,5 +22,4 @@ class CommandManager {
     void command(const char* cmd) const;
 
     static CommandManager* getInstance();
-
 };

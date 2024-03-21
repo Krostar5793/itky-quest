@@ -8,6 +8,7 @@
 
 int main(int argc, char* argv[]) {
   const CommandManager* commandManager(CommandManager::getInstance());
+  const uint8_t numberOfCommands = argc - 1;
 
   try {
     commandManager->command(argv[1]);
