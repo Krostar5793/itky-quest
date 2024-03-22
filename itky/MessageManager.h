@@ -22,7 +22,7 @@ class MessageManager {
 
     void help();
     void version();
-    void write();
+    void edit();
 
     static MessageManager* getInstance();
 

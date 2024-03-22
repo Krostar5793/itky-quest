@@ -11,11 +11,10 @@ CommandListManager :: ~CommandListManager() {}
 
 void CommandListManager :: createCommandList() {
   static MessageManager* messageManager = MessageManager :: getInstance();
-  // commandList[nullptr] = { []() { messageManager->help(); } };
-  commandList["help"] = { []() { messageManager->help(); } };
-  commandList["--help"] = { []() { messageManager->help(); } };
-  commandList["version"] = { []() { messageManager->version(); } };
-  commandList["--version"] = { []() { messageManager->version(); } };
+  commandList["-help"]      = { []() { messageManager->help(); } };
+  commandList["--help"]     = { []() { messageManager->help(); } };
+  commandList["-version"]   = { []() { messageManager->version(); } };
+  commandList["--version"]  = { []() { messageManager->version(); } };
 }
 
 CommandListManager* CommandListManager :: getInstance() {

@@ -1,4 +1,5 @@
 #include "MessageManager.h"
+#include "CommandManager.h"
 
 #include <fstream>
 
@@ -20,7 +21,7 @@ void MessageManager :: version() {
   printTextFile("./messages/version.txt");
 }
 
-void MessageManager :: write() {
+void MessageManager :: edit() {
   std::cout << "Choose file > ";
 }
 
