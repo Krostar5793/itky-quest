@@ -1,4 +1,5 @@
 #include "CommandListManager.h"
+#include "CommandManager.h"
 #include "MessageManager.h"
 
 std::map<std::string, CommandFunctionType> CommandListManager :: commandList;
@@ -10,11 +11,13 @@ CommandListManager :: CommandListManager() {
 CommandListManager :: ~CommandListManager() {}
 
 void CommandListManager :: createCommandList() {
-  static MessageManager* messageManager = MessageManager :: getInstance();
-  commandList["-help"]      = { []() { messageManager->help(); } };
-  commandList["--help"]     = { []() { messageManager->help(); } };
-  commandList["-version"]   = { []() { messageManager->version(); } };
-  commandList["--version"]  = { []() { messageManager->version(); } };
+  static CommandManager* commandManager = CommandManager :: getInstance();
+  commandList["-help"]      = { []() { commandManager->help(); } };
+  commandList["--help"]     = { []() { commandManager->help(); } };
+  commandList["-version"]   = { []() { commandManager->version(); } };
+  commandList["--version"]  = { []() { commandManager->version(); } };
+  commandList["edit"]       = { []() { commandManager->edit(); } };
+  commandList["view"]       = { []() { commandManager->view(); } };
 }
 
 CommandListManager* CommandListManager :: getInstance() {

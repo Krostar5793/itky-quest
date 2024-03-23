@@ -5,16 +5,23 @@
 
 #include "CommandManager.h"
 #include "UnknownCommandError.h"
+#include "ParamsNotFoundError.h"
 
 int main(int argc, char* argv[]) {
-  const CommandManager* commandManager(CommandManager::getInstance());
   const uint8_t numberOfCommands = argc - 1;
+  std::vector<std::string> params;
+
+  for ( int i = 1; i < argc; i++ ) {
+    params.emplace_back(argv[i]);
+  }
 
   try {
-    commandManager->command(argv[1]);
+    CommandManager :: getInstance()->command(params);
   } catch ( const UnknownCommandError& e ) {
     std::cout << e.what() << std::endl;
     return -1;
+  } catch ( const ParamsNotFoundError& e ) {
+    std::cout << e.what() << std::endl;
   }
   
   return 0;
