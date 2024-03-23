@@ -9,8 +9,9 @@ TARGET	= itky.exe
 
 # sources
 MAIN		= itky.cpp
-ERRS		= FileNotFoundError.cpp UnknownCommandError.cpp
+ERRS		= FileNotFoundError.cpp UnknownCommandError.cpp ParamsNotFoundError.cpp
 MNGS		= MessageManager.cpp CommandManager.cpp CommandListManager.cpp
+DOM			= DocumentObjectModel.cpp Armors.cpp Items.cpp Materials.cpp Monsters.cpp Weapons.cpp
 SRCS		= $(MAIN) $(ERRS) $(MNGS)
 
 # Object filename
