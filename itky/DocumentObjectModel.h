@@ -5,6 +5,8 @@ class DocumentObjectModel {
     DocumentObjectModel() = default;
     DocumentObjectModel();
     virtual ~DocumentObjectModel();
+
+    virtual void write() = 0;
 };
 
 using DOM = DocumentObjectModel;

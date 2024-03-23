@@ -2,17 +2,17 @@
 
 #include <string>
 
-class Armors : DocumentObjectModel {
+class Armors final : public DocumentObjectModel {
   private:
     std::string name;
-    std::string type;
     std::string rarity;
     std::string price;
+    std::string type;
     std::string description;
     std::string effection;
 
   public:
-    Armors() = default;
+    Armors();
     Armors(
       std::string,
       std::string,
@@ -22,5 +22,7 @@ class Armors : DocumentObjectModel {
       std::string
     );
     ~Armors();
+
+    void write();
 
 };
