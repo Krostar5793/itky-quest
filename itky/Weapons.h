@@ -2,7 +2,7 @@
 
 #include <string>
 
-class Weapons : public DocumentObjectModel {
+class Weapons final : public DocumentObjectModel {
   private:
     std::string name;
     std::string type;
@@ -12,7 +12,7 @@ class Weapons : public DocumentObjectModel {
     std::string effection;
 
   public:
-    Weapons() = default;
+    Weapons();
     Weapons(
       std::string,
       std::string,
@@ -22,5 +22,7 @@ class Weapons : public DocumentObjectModel {
       std::string
     );
     ~Weapons();
+
+    void write();
 
 };

@@ -22,7 +22,6 @@ class MessageManager {
 
     void help();
     void version();
-    void edit();
 
     static MessageManager* getInstance();
 

@@ -2,18 +2,18 @@
 
 #include <string>
 
-class Items : public DocumentObjectModel {
+class Items final : public DocumentObjectModel {
   private:
     std::string name;
     std::string rarity;
     std::string price;
-    std::string whenEnable;
     std::string description;
     std::string effection;
+    std::string whenEnable;
     std::string isConsumable;
 
   public:
-    Items() = default;
+    Items();
     Items(
       std::string,
       std::string,
@@ -24,5 +24,7 @@ class Items : public DocumentObjectModel {
       std::string
     );
     ~Items();
+
+    void write();
 
 };

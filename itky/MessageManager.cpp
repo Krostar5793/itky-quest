@@ -3,6 +3,11 @@
 
 #include <fstream>
 
+MessageManager* MessageManager :: getInstance() {
+  static MessageManager _instance;
+  return &_instance;
+}
+
 void MessageManager :: printTextFile(const std::string fileName) {
   std::ifstream infile(fileName);
   if ( !infile ) throw FileNotFoundError();
@@ -21,11 +26,3 @@ void MessageManager :: version() {
   printTextFile("./messages/version.txt");
 }
 
-void MessageManager :: edit() {
-  std::cout << "Choose file > ";
-}
-
-MessageManager* MessageManager :: getInstance() {
-  static MessageManager _instance;
-  return &_instance;
-}
