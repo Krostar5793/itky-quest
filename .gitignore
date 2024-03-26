@@ -4,3 +4,5 @@
 *.d
 
 .vscode
+
+docs/images/*
